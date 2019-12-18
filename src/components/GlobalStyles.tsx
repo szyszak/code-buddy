@@ -20,8 +20,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: #1d2b3d;
-    color: #eaeaea;
+    background-color: #171717;
+    color: #ffffff;
     font-family: 'Cairo', sans-serif;
   }
 `;

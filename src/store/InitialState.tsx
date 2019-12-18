@@ -24,6 +24,8 @@ const InitialState: IState = {
     }
   ],
   settings: {
+    currentSnippet: 'lol123',
+    language: 'javascript',
     theme: 'monokai',
     autoSave: true,
     fontSize: 18,
@@ -31,6 +33,41 @@ const InitialState: IState = {
     wrapLines: true,
     showGutter: true,
     highlightActiveLine: true
+  },
+  dropdownOptions: {
+    languages: [
+      'C/C++',
+      'C#',
+      'CSS',
+      'Golang',
+      'Haskell',
+      'HTML',
+      'Java',
+      'JavaScript',
+      'JSON',
+      'JSX',
+      'Lua',
+      'PHP',
+      'Python',
+      'Ruby',
+      'Rust',
+      'Sass',
+      'SCSS',
+      'SQL',
+      'TypeScript',
+      'XML'
+    ],
+    themes: [
+      'Cobalt',
+      'Dracula',
+      'GitHub',
+      'Monokai',
+      'Solarized Dark',
+      'Solarized Light',
+      'Tomorrow Night'
+    ],
+    fontSizes: [14, 16, 18, 20, 22, 24],
+    tabSizes: [2, 4, 8]
   }
 };
 

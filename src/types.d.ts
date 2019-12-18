@@ -6,6 +6,8 @@ export interface ISnippet {
 }
 
 export interface ISettings {
+  currentSnippet: string;
+  language: string;
   theme: string;
   autoSave: boolean;
   fontSize: number;
@@ -15,14 +17,32 @@ export interface ISettings {
   highlightActiveLine: boolean;
 }
 
+export interface IDropdownOptions {
+  languages: string[];
+  themes: string[];
+  fontSizes: number[];
+  tabSizes: number[];
+}
+
 export type IState = {
   snippets: ISnippet[];
   settings: ISettings;
+  dropdownOptions: IDropdownOptions;
 };
 
 export type IAction =
-  | { type: 'snippets/add', payload: string }
-  | { type: 'snippets/remove', payload: number }
+  | { type: 'snippets/add', payload: ISnippet }
+  | { type: 'snippets/remove', payload: string }
+  | { type: 'snippets/update', payload: ISnippet }
+  | { type: 'settings/changeSnippet', payload: string }
+  | { type: 'settings/changeLanguage', payload: string }
+  | { type: 'settings/changeTheme', payload: string }
+  | { type: 'settings/changeFontSize', payload: number }
+  | { type: 'settings/changeTabSize', payload: number }
+  | { type: 'settings/toggleAutosave', payload: boolean }
+  | { type: 'settings/toggleWrapLines', payload: boolean }
+  | { type: 'settings/toggleShowGutter', payload: boolean }
+  | { type: 'settings/toggleHighlightActiveLine', payload: boolean }
 
 export interface IContext {
   state: IState;

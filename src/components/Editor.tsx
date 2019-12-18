@@ -1,6 +1,6 @@
 import React from 'react';
 import AceEditor from 'react-ace';
-
+import 'ace-builds/webpack-resolver';
 // EXTENSIONS?
 
 // LANGUAGES
@@ -39,12 +39,13 @@ const Editor = () => (
     <AceEditor
       width="100%"
       mode="javascript"
-      theme="solarized_dark"
-      value="const shit = 'fuck'; console.log('whut')"
+      theme="dracula"
+      value="console.log('whut')"
       name="code-editor" // musi byc unique?
       fontSize={16}
       tabSize={2}
       editorProps={{ $blockScrolling: true }}
+      // setOptions={{ useWorker: false }}
     />
   </section>
 );
