@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Sidebar from './components/Sidebar';
 import Editor from './components/Editor';
 import styled from 'styled-components';
+import { StoreContext } from './store/Store';
 
 const Wrapper = styled.div`
   max-width: 1200px;
@@ -21,6 +22,8 @@ const Main = styled.main`
 `;
 
 const App: React.FC = () => {
+  const { state } = useContext(StoreContext);
+  console.log(state);
   return (
     <Wrapper>
       <Header>Code Buddy</Header>

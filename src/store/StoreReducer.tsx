@@ -3,7 +3,8 @@ import { IState, IAction } from '../types';
 const StoreReducer = (state: IState, action: IAction): IState => {
   switch (action.type) {
     case 'snippets/add': {
-      const newState: IState = {};
+      // zmienic any na IState
+      const newState: any = {};
 
       return newState;
     }
