@@ -9,19 +9,20 @@ const Section = styled.section`
 `;
 
 const Sidebar = () => {
-  const { state, dispatch } = useContext(StoreContext);
-  const { dropdownOptions } = state;
+  // tutaj handle change dla dropdownow i checkboxow podawane nizej jako prop?
+  const { state } = useContext(StoreContext);
+  const {
+    dropdownOptions: { languages, themes, fontSizes, tabSizes }
+  } = state;
 
   return (
     <Section>
       <button>ADD NEW</button>
 
-      <Dropdown
-        label="language"
-        optionsArr={dropdownOptions.languages}
-        actionType="settings/changeLanguage"
-      />
-      {/* <Dropdown label="theme" optionsArr={dropdownOptions.themes} /> */}
+      <Dropdown label="language" optionsArr={languages} actionType="settings/changeLanguage" />
+      <Dropdown label="theme" optionsArr={themes} actionType="settings/changeTheme" />
+      <Dropdown label="font size" optionsArr={fontSizes} actionType="settings/changeFontSize" />
+      <Dropdown label="tab size" optionsArr={tabSizes} actionType="settings/changeTabSize" />
     </Section>
   );
 };
