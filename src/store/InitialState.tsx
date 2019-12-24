@@ -27,10 +27,10 @@ const InitialState: IState = {
     currentSnippet: 'lol123',
     language: 'javascript',
     theme: 'monokai',
-    autoSave: true,
+    autoSave: false,
     fontSize: 18,
     tabSize: 2,
-    wrapLines: true,
+    wrapLines: false,
     showGutter: true,
     highlightActiveLine: true
   },

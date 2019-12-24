@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import AceEditor from 'react-ace';
+import { StoreContext } from '../store/Store';
 import 'ace-builds/webpack-resolver';
 // EXTENSIONS?
 
@@ -34,20 +35,41 @@ import 'ace-builds/src-min-noconflict/theme-solarized_dark';
 import 'ace-builds/src-min-noconflict/theme-solarized_light';
 import 'ace-builds/src-min-noconflict/theme-tomorrow_night';
 
-const Editor = () => (
-  <section>
-    <AceEditor
-      width="100%"
-      mode="javascript"
-      theme="dracula"
-      value="console.log('whut')"
-      name="code-editor" // musi byc unique?
-      fontSize={16}
-      tabSize={2}
-      editorProps={{ $blockScrolling: true }}
-      // setOptions={{ useWorker: false }}
-    />
-  </section>
-);
+const Editor = () => {
+  const { state } = useContext(StoreContext);
+  const {
+    settings: {
+      currentSnippet,
+      language,
+      theme,
+      autoSave,
+      fontSize,
+      tabSize,
+      wrapLines,
+      showGutter,
+      highlightActiveLine
+    }
+  } = state;
+
+  return (
+    <section>
+      <AceEditor
+        width="100%"
+        focus={true}
+        mode={language}
+        theme={theme}
+        value="console.log('whut')"
+        name="code-editor" // musi byc unique?
+        fontSize={fontSize}
+        tabSize={tabSize}
+        showGutter={showGutter}
+        highlightActiveLine={highlightActiveLine}
+        wrapEnabled={wrapLines}
+        editorProps={{ $blockScrolling: true }}
+        // setOptions={{ useWorker: false }}
+      />
+    </section>
+  );
+};
 
 export default Editor;

@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import { StoreContext } from '../store/Store';
 import { IAction } from '../types';
 
-// had to use 'optionsArr: any[]' because .map() can't call union types in TypeScript, ideally it would be 'string[] | number[]'
 interface ICheckboxProps {
   label: string;
   isChecked: boolean;
@@ -13,15 +12,15 @@ interface ICheckboxProps {
 const Checkbox: React.FC<ICheckboxProps> = ({ label, isChecked, actionType }) => {
   const { dispatch } = useContext(StoreContext);
 
-  const handleChange = (ev: any) => {
-    dispatch({ type: actionType, payload: ev.currentTarget.value });
-  };
-
   return (
-    <label htmlFor={label}>
-      {label}:
-      <input type="checkbox" onChange={ev => handleChange(ev)} id={label} />
-    </label>
+    <div>
+      <label htmlFor={label}>{label}:</label>
+      <input
+        type="checkbox"
+        checked={isChecked}
+        onChange={() => dispatch({ type: actionType } as IAction)}
+      />
+    </div>
   );
 };
 

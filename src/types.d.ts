@@ -39,12 +39,16 @@ export type IAction =
   | { type: 'settings/changeTheme', payload: string }
   | { type: 'settings/changeFontSize', payload: number }
   | { type: 'settings/changeTabSize', payload: number }
-  | { type: 'settings/toggleAutosave', payload: boolean }
-  | { type: 'settings/toggleWrapLines', payload: boolean }
-  | { type: 'settings/toggleShowGutter', payload: boolean }
-  | { type: 'settings/toggleHighlightActiveLine', payload: boolean }
+  | { type: 'settings/toggleAutosave' }
+  | { type: 'settings/toggleWrapLines' }
+  | { type: 'settings/toggleShowGutter' }
+  | { type: 'settings/toggleHighlightActiveLine' }
 
 export interface IContext {
   state: IState;
   dispatch: React.Dispatch<IAction>;
+}
+
+export interface IDictionary {
+  [key: string]: string;
 }
