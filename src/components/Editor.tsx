@@ -34,7 +34,6 @@ import 'ace-builds/src-min-noconflict/theme-monokai';
 import 'ace-builds/src-min-noconflict/theme-solarized_dark';
 import 'ace-builds/src-min-noconflict/theme-solarized_light';
 import 'ace-builds/src-min-noconflict/theme-tomorrow_night';
-import { ISnippet } from '../types';
 
 const Editor = () => {
   const { state } = useContext(StoreContext);
@@ -42,7 +41,7 @@ const Editor = () => {
     settings: {
       currentSnippetId,
       theme,
-      autoSave,
+      // autoSave,
       fontSize,
       tabSize,
       wrapLines,
