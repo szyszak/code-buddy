@@ -31,7 +31,11 @@ const StoreReducer = (state: IState, action: IAction): IState => {
 
     case 'settings/changeLanguage': {
       const newState = produce(state, draftState => {
-        draftState.settings.language = languages[action.payload];
+        const currentSnippetData = draftState.snippets.find(
+          snippet => snippet.id === draftState.settings.currentSnippetId
+        );
+
+        currentSnippetData!.language = languages[action.payload];
       });
 
       return newState;

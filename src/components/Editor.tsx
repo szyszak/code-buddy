@@ -34,13 +34,13 @@ import 'ace-builds/src-min-noconflict/theme-monokai';
 import 'ace-builds/src-min-noconflict/theme-solarized_dark';
 import 'ace-builds/src-min-noconflict/theme-solarized_light';
 import 'ace-builds/src-min-noconflict/theme-tomorrow_night';
+import { ISnippet } from '../types';
 
 const Editor = () => {
   const { state } = useContext(StoreContext);
   const {
     settings: {
-      currentSnippet,
-      language,
+      currentSnippetId,
       theme,
       autoSave,
       fontSize,
@@ -51,6 +51,12 @@ const Editor = () => {
     }
   } = state;
 
+  const currentSnippetData = state.snippets.find(snippet => snippet.id === currentSnippetId);
+  console.log(currentSnippetData);
+
+  // @ts-ignore
+  const { title, language, value } = currentSnippetData;
+
   return (
     <section>
       <AceEditor
@@ -58,7 +64,7 @@ const Editor = () => {
         focus={true}
         mode={language}
         theme={theme}
-        value="console.log('whut')"
+        value={value}
         name="code-editor" // musi byc unique?
         fontSize={fontSize}
         tabSize={tabSize}

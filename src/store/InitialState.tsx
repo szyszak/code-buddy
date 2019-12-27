@@ -24,8 +24,7 @@ const InitialState: IState = {
     }
   ],
   settings: {
-    currentSnippet: 'lol123',
-    language: 'javascript',
+    currentSnippetId: 'haha99',
     theme: 'monokai',
     autoSave: false,
     fontSize: 18,

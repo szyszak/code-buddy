@@ -6,8 +6,7 @@ export interface ISnippet {
 }
 
 export interface ISettings {
-  currentSnippet: string;
-  language: string;
+  currentSnippetId: string;
   theme: string;
   autoSave: boolean;
   fontSize: number;
