@@ -2,104 +2,177 @@ import produce from 'immer';
 import { languages, themes } from './Dictionaries';
 import { IState, IAction } from '../types';
 
-const StoreReducer = (state: IState, action: IAction): IState => {
+// const StoreReducer = (state: IState, action: IAction): IState => {
+//   console.log(action);
+//   switch (action.type) {
+//     case 'snippets/add': {
+//       const newState: any = {};
+
+//       return newState;
+//     }
+
+//     case 'snippets/remove': {
+//       const newState: any = {};
+
+//       return newState;
+//     }
+
+//     case 'snippets/update': {
+//       const newState: any = {};
+
+//       return newState;
+//     }
+
+//     case 'settings/changeSnippet': {
+//       const newState: any = {};
+
+//       return newState;
+//     }
+
+//     case 'settings/changeLanguage': {
+//       const newState = produce(state, draftState => {
+//         const currentSnippetData = draftState.snippets.find(
+//           snippet => snippet.id === draftState.settings.currentSnippetId
+//         );
+
+//         currentSnippetData!.language = languages[action.payload];
+//       });
+
+//       return newState;
+//     }
+
+//     case 'settings/changeTheme': {
+//       const newState = produce(state, draftState => {
+//         draftState.settings.theme = themes[action.payload];
+//       });
+
+//       return newState;
+//     }
+
+//     case 'settings/changeFontSize': {
+//       const newState = produce(state, draftState => {
+//         draftState.settings.fontSize = Number(action.payload);
+//       });
+
+//       return newState;
+//     }
+
+//     case 'settings/changeTabSize': {
+//       const newState = produce(state, draftState => {
+//         draftState.settings.tabSize = Number(action.payload);
+//       });
+
+//       return newState;
+//     }
+
+//     case 'settings/toggleAutosave': {
+//       const newState = produce(state, draftState => {
+//         draftState.settings.autoSave = !state.settings.autoSave;
+//       });
+
+//       return newState;
+//     }
+
+//     case 'settings/toggleWrapLines': {
+//       const newState = produce(state, draftState => {
+//         draftState.settings.wrapLines = !state.settings.wrapLines;
+//       });
+
+//       return newState;
+//     }
+
+//     case 'settings/toggleShowGutter': {
+//       const newState = produce(state, draftState => {
+//         draftState.settings.showGutter = !state.settings.showGutter;
+//       });
+
+//       return newState;
+//     }
+
+//     case 'settings/toggleHighlightActiveLine': {
+//       const newState = produce(state, draftState => {
+//         draftState.settings.highlightActiveLine = !state.settings.highlightActiveLine;
+//       });
+
+//       return newState;
+//     }
+
+//     default:
+//       return state;
+//   }
+// };
+
+const StoreReducer = produce((draft: IState, action: IAction) => {
   console.log(action);
   switch (action.type) {
     case 'snippets/add': {
-      const newState: any = {};
-
-      return newState;
+      return;
     }
 
     case 'snippets/remove': {
-      const newState: any = {};
-
-      return newState;
+      return;
     }
 
     case 'snippets/update': {
-      const newState: any = {};
-
-      return newState;
+      return;
     }
 
     case 'settings/changeSnippet': {
-      const newState: any = {};
-
-      return newState;
+      return;
     }
 
     case 'settings/changeLanguage': {
-      const newState = produce(state, draftState => {
-        const currentSnippetData = draftState.snippets.find(
-          snippet => snippet.id === draftState.settings.currentSnippetId
-        );
+      const currentSnippetData = draft.snippets.find(
+        snippet => snippet.id === draft.settings.currentSnippetId
+      );
 
-        currentSnippetData!.language = languages[action.payload];
-      });
+      currentSnippetData!.language = languages[action.payload];
 
-      return newState;
+      return;
     }
 
     case 'settings/changeTheme': {
-      const newState = produce(state, draftState => {
-        draftState.settings.theme = themes[action.payload];
-      });
+      draft.settings.theme = themes[action.payload];
 
-      return newState;
+      return;
     }
 
     case 'settings/changeFontSize': {
-      const newState = produce(state, draftState => {
-        draftState.settings.fontSize = Number(action.payload);
-      });
+      draft.settings.fontSize = Number(action.payload);
 
-      return newState;
+      return;
     }
 
     case 'settings/changeTabSize': {
-      const newState = produce(state, draftState => {
-        draftState.settings.tabSize = Number(action.payload);
-      });
+      draft.settings.tabSize = Number(action.payload);
 
-      return newState;
+      return;
     }
 
     case 'settings/toggleAutosave': {
-      const newState = produce(state, draftState => {
-        draftState.settings.autoSave = !state.settings.autoSave;
-      });
+      draft.settings.autoSave = !draft.settings.autoSave;
 
-      return newState;
+      return;
     }
 
     case 'settings/toggleWrapLines': {
-      const newState = produce(state, draftState => {
-        draftState.settings.wrapLines = !state.settings.wrapLines;
-      });
+      draft.settings.wrapLines = !draft.settings.wrapLines;
 
-      return newState;
+      return;
     }
 
     case 'settings/toggleShowGutter': {
-      const newState = produce(state, draftState => {
-        draftState.settings.showGutter = !state.settings.showGutter;
-      });
+      draft.settings.showGutter = !draft.settings.showGutter;
 
-      return newState;
+      return;
     }
 
     case 'settings/toggleHighlightActiveLine': {
-      const newState = produce(state, draftState => {
-        draftState.settings.highlightActiveLine = !state.settings.highlightActiveLine;
-      });
+      draft.settings.highlightActiveLine = !draft.settings.highlightActiveLine;
 
-      return newState;
+      return;
     }
-
-    default:
-      return state;
   }
-};
+});
 
 export default StoreReducer;
