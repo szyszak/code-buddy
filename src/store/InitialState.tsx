@@ -6,7 +6,7 @@ const InitialState: IState = {
       title: 'log stuff into console',
       language: 'javascript',
       value: 'console.log("HELLO WORLD");',
-      id: 'lol123'
+      id: 'lol123',
     },
     {
       title: 'make body color blue',
@@ -14,24 +14,30 @@ const InitialState: IState = {
       value: `body {
         background-color: blue;
       }`,
-      id: 'haha99'
+      id: 'haha99',
     },
     {
       title: 'show a paragraph',
       language: 'html',
       value: "<p>what's up?</p>",
-      id: 'hihi999'
-    }
+      id: 'hihi999',
+    },
   ],
+  currentSnippet: {
+    title: 'show a paragraph',
+    language: 'html',
+    value: "<p>what's up?</p>",
+    id: 'hihi999',
+  },
   settings: {
     currentSnippetId: 'haha99',
     theme: 'monokai',
-    autoSave: false,
     fontSize: 18,
     tabSize: 2,
-    wrapLines: false,
+    autoSave: true,
+    wrapLines: true,
     showGutter: true,
-    highlightActiveLine: true
+    highlightActiveLine: true,
   },
   dropdownOptions: {
     languages: [
@@ -54,20 +60,12 @@ const InitialState: IState = {
       'SCSS',
       'SQL',
       'TypeScript',
-      'XML'
+      'XML',
     ],
-    themes: [
-      'Cobalt',
-      'Dracula',
-      'GitHub',
-      'Monokai',
-      'Solarized Dark',
-      'Solarized Light',
-      'Tomorrow Night'
-    ],
+    themes: ['Cobalt', 'Dracula', 'GitHub', 'Monokai', 'Solarized Dark', 'Solarized Light', 'Tomorrow Night'],
     fontSizes: [14, 16, 18, 20, 22, 24],
-    tabSizes: [2, 4, 8]
-  }
+    tabSizes: [2, 4, 8],
+  },
 };
 
 export default InitialState;

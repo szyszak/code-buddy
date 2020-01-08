@@ -11,11 +11,12 @@ const Section = styled.section`
 
 const Sidebar = () => {
   const { state } = useContext(StoreContext);
+
   const {
-    dropdownOptions: { languages, themes, fontSizes, tabSizes }
+    dropdownOptions: { languages, themes, fontSizes, tabSizes },
   } = state;
   const {
-    settings: { autoSave, wrapLines, showGutter, highlightActiveLine }
+    settings: { autoSave, wrapLines, showGutter, highlightActiveLine },
   } = state;
 
   return (
@@ -30,11 +31,7 @@ const Sidebar = () => {
       <Checkbox label="autosave" isChecked={autoSave} actionType="settings/toggleAutosave" />
       <Checkbox label="wrap lines" isChecked={wrapLines} actionType="settings/toggleWrapLines" />
       <Checkbox label="show gutter" isChecked={showGutter} actionType="settings/toggleShowGutter" />
-      <Checkbox
-        label="highlight active line"
-        isChecked={highlightActiveLine}
-        actionType="settings/toggleHighlightActiveLine"
-      />
+      <Checkbox label="highlight active line" isChecked={highlightActiveLine} actionType="settings/toggleHighlightActiveLine" />
     </Section>
   );
 };

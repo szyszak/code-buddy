@@ -8,9 +8,9 @@ export interface ISnippet {
 export interface ISettings {
   currentSnippetId: string;
   theme: string;
-  autoSave: boolean;
   fontSize: number;
   tabSize: number;
+  autoSave: boolean;
   wrapLines: boolean;
   showGutter: boolean;
   highlightActiveLine: boolean;
@@ -25,6 +25,7 @@ export interface IDropdownOptions {
 
 export type IState = {
   snippets: ISnippet[];
+  currentSnippet: ISnippet;
   settings: ISettings;
   dropdownOptions: IDropdownOptions;
 };

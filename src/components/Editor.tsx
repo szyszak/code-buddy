@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import AceEditor from 'react-ace';
 import { StoreContext } from '../store/Store';
 import 'ace-builds/webpack-resolver';
+
 // EXTENSIONS?
 
 // LANGUAGES
@@ -50,14 +51,15 @@ const Editor = () => {
     }
   } = state;
 
-  const currentSnippetData = state.snippets.find(snippet => snippet.id === currentSnippetId);
+  // TODO: obsluga undefind jezeli danego snippeta nie ma w kolekcji
+  const currentSnippetData = state.snippets.find(snippet => snippet.id === currentSnippetId)!;
   console.log(currentSnippetData);
 
-  // @ts-ignore
   const { title, language, value } = currentSnippetData;
 
   return (
     <section>
+      <h2>snippet title: {title}</h2>
       <AceEditor
         width="100%"
         focus={true}
