@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-// import styled from 'styled-components';
-import { StoreContext } from '../store/Store';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { IAction } from '../types';
+// import styled from 'styled-components';
 
 // had to use 'optionsArr: any[]' because .map() can't call union types in TypeScript, ideally it would be 'string[] | number[]'
 interface IDropdownProps {
@@ -11,10 +11,10 @@ interface IDropdownProps {
 }
 
 const Dropdown: React.FC<IDropdownProps> = ({ label, optionsArr, actionType }) => {
-  const { dispatch } = useContext(StoreContext);
+  const dispatch = useDispatch();
 
   const handleChange = (ev: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch({ type: actionType, payload: ev.currentTarget.value } as IAction);
+    dispatch({ type: actionType, payload: ev.currentTarget.value });
   };
 
   const options = optionsArr.map((option: string, idx: number) => (

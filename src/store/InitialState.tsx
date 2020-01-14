@@ -1,35 +1,36 @@
-import { IState } from '../types';
+import { ISnippetsState, ISettingsState } from '../types';
 
-const InitialState: IState = {
-  snippets: [
-    {
-      title: 'log stuff into console',
-      language: 'javascript',
-      value: 'console.log("HELLO WORLD");',
-      id: 'lol123',
-    },
-    {
-      title: 'make body color blue',
-      language: 'css',
-      value: `body {
+export const initialSnippetsState: ISnippetsState = [
+  {
+    title: 'log stuff into console',
+    language: 'javascript',
+    value: 'console.log("HELLO WORLD");',
+    id: 'lol123',
+  },
+  {
+    title: 'make body color blue',
+    language: 'css',
+    value: `body {
         background-color: blue;
       }`,
-      id: 'haha99',
-    },
-    {
-      title: 'show a paragraph',
-      language: 'html',
-      value: "<p>what's up?</p>",
-      id: 'hihi999',
-    },
-  ],
+    id: 'haha99',
+  },
+  {
+    title: 'show a paragraph',
+    language: 'html',
+    value: "<p>what's up?</p>",
+    id: 'hihi999',
+  },
+];
+
+export const initialSettingsState: ISettingsState = {
   currentSnippet: {
     title: 'show a paragraph',
     language: 'html',
     value: "<p>what's up?</p>",
     id: 'hihi999',
   },
-  settings: {
+  editorSettings: {
     currentSnippetId: 'haha99',
     theme: 'monokai',
     fontSize: 18,
@@ -38,6 +39,7 @@ const InitialState: IState = {
     wrapLines: true,
     showGutter: true,
     highlightActiveLine: true,
+    firstVisit: false,
   },
   dropdownOptions: {
     languages: [
@@ -62,10 +64,16 @@ const InitialState: IState = {
       'TypeScript',
       'XML',
     ],
-    themes: ['Cobalt', 'Dracula', 'GitHub', 'Monokai', 'Solarized Dark', 'Solarized Light', 'Tomorrow Night'],
+    themes: [
+      'Cobalt',
+      'Dracula',
+      'GitHub',
+      'Monokai',
+      'Solarized Dark',
+      'Solarized Light',
+      'Tomorrow Night',
+    ],
     fontSizes: [14, 16, 18, 20, 22, 24],
     tabSizes: [2, 4, 8],
   },
 };
-
-export default InitialState;

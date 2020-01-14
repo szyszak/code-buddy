@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import useTypedSelector from './hooks/useTypedSelector';
 import Sidebar from './components/Sidebar';
 import Editor from './components/Editor';
 import styled from 'styled-components';
-import { StoreContext } from './store/Store';
 
 const Wrapper = styled.div`
   max-width: 1200px;
@@ -22,8 +22,9 @@ const Main = styled.main`
 `;
 
 const App: React.FC = () => {
-  const { state } = useContext(StoreContext);
-  console.log(state);
+  const snippets = useTypedSelector(state => state.snippets);
+  const settings = useTypedSelector(state => state.settings);
+  console.log(snippets, settings);
   return (
     <Wrapper>
       <Header>Code Buddy</Header>

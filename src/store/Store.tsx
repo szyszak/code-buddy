@@ -1,14 +1,6 @@
-import React, { useReducer, createContext } from 'react';
-import InitialState from './InitialState';
-import StoreReducer from './StoreReducer';
-import { IContext } from '../types';
+import { createStore } from 'redux';
+import rootReducer from './reducers/rootReducer';
 
-const StoreContext = createContext<IContext>({} as IContext);
+const store = createStore(rootReducer);
 
-const StoreProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = useReducer(StoreReducer, InitialState);
-
-  return <StoreContext.Provider value={{ state, dispatch }}>{children}</StoreContext.Provider>;
-};
-
-export { StoreContext, StoreProvider };
+export default store;
