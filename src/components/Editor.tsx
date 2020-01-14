@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import AceEditor from 'react-ace';
-import { StoreContext } from '../store/Store';
+import useTypedSelector from '../hooks/useTypedSelector';
 import 'ace-builds/webpack-resolver';
 
-// EXTENSIONS?
+// ACE EDITOR EXTENSIONS?
 
 // LANGUAGES
 import 'ace-builds/src-min-noconflict/mode-c_cpp';
@@ -36,23 +36,23 @@ import 'ace-builds/src-min-noconflict/theme-solarized_dark';
 import 'ace-builds/src-min-noconflict/theme-solarized_light';
 import 'ace-builds/src-min-noconflict/theme-tomorrow_night';
 
-const Editor = () => {
-  const { state } = useContext(StoreContext);
+const Editor: React.FC = () => {
+  const settings = useTypedSelector(state => state.settings.editorSettings);
+  const snippets = useTypedSelector(state => state.snippets);
+
   const {
-    settings: {
-      currentSnippetId,
-      theme,
-      // autoSave,
-      fontSize,
-      tabSize,
-      wrapLines,
-      showGutter,
-      highlightActiveLine
-    }
-  } = state;
+    currentSnippetId,
+    theme,
+    // autoSave,
+    fontSize,
+    tabSize,
+    wrapLines,
+    showGutter,
+    highlightActiveLine,
+  } = settings;
 
   // TODO: obsluga undefind jezeli danego snippeta nie ma w kolekcji
-  const currentSnippetData = state.snippets.find(snippet => snippet.id === currentSnippetId)!;
+  const currentSnippetData = snippets.find(snippet => snippet.id === currentSnippetId)!;
   console.log(currentSnippetData);
 
   const { title, language, value } = currentSnippetData;

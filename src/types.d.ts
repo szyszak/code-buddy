@@ -5,7 +5,7 @@ export interface ISnippet {
   id: string;
 }
 
-export interface ISettings {
+export interface IEditorSettings {
   currentSnippetId: string;
   theme: string;
   fontSize: number;
@@ -14,6 +14,7 @@ export interface ISettings {
   wrapLines: boolean;
   showGutter: boolean;
   highlightActiveLine: boolean;
+  firstVisit: boolean;
 }
 
 export interface IDropdownOptions {
@@ -23,19 +24,21 @@ export interface IDropdownOptions {
   tabSizes: number[];
 }
 
-export type IState = {
-  snippets: ISnippet[];
-  currentSnippet: ISnippet;
-  settings: ISettings;
-  dropdownOptions: IDropdownOptions;
-};
+export type ISnippetsState = ISnippet[];
 
-export type IAction =
+export type ISettingsState = {
+  currentSnippet: ISnippet;
+  editorSettings: IEditorSettings;
+  dropdownOptions: IDropdownOptions;
+}
+
+export type ISnippetsAction =
   | { type: 'snippets/add', payload: ISnippet }
   | { type: 'snippets/remove', payload: string }
   | { type: 'snippets/update', payload: ISnippet }
+
+export type ISettingsAction =
   | { type: 'settings/changeSnippet', payload: string }
-  | { type: 'settings/changeLanguage', payload: string }
   | { type: 'settings/changeTheme', payload: string }
   | { type: 'settings/changeFontSize', payload: number }
   | { type: 'settings/changeTabSize', payload: number }
@@ -43,11 +46,9 @@ export type IAction =
   | { type: 'settings/toggleWrapLines' }
   | { type: 'settings/toggleShowGutter' }
   | { type: 'settings/toggleHighlightActiveLine' }
+  | { type: 'settings/changeFirstVisit' }
 
-export interface IContext {
-  state: IState;
-  dispatch: React.Dispatch<IAction>;
-}
+export type IAction = ISnippetsAction | ISettingsAction
 
 export interface IDictionary {
   [key: string]: string;

@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 // import styled from 'styled-components';
-import { StoreContext } from '../store/Store';
+import { useDispatch } from 'react-redux';
 import { IAction } from '../types';
 
 interface ICheckboxProps {
@@ -10,15 +10,16 @@ interface ICheckboxProps {
 }
 
 const Checkbox: React.FC<ICheckboxProps> = ({ label, isChecked, actionType }) => {
-  const { dispatch } = useContext(StoreContext);
+  const dispatch = useDispatch();
 
   return (
     <div>
       <label htmlFor={label}>{label}:</label>
       <input
         type="checkbox"
+        id={label}
         checked={isChecked}
-        onChange={() => dispatch({ type: actionType } as IAction)}
+        onChange={() => dispatch({ type: actionType })}
       />
     </div>
   );
