@@ -1,31 +1,36 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { IAction } from '../types';
+import { IAction, IDictionary } from '../types';
 // import styled from 'styled-components';
 
-// had to use 'optionsArr: any[]' because .map() can't call union types in TypeScript, ideally it would be 'string[] | number[]'
 interface IDropdownProps {
+  value: string | number;
+  id?: string;
   label: string;
-  optionsArr: any[];
+  options: IDictionary;
   actionType: IAction['type'];
 }
 
-const Dropdown: React.FC<IDropdownProps> = ({ label, optionsArr, actionType }) => {
+const Dropdown: React.FC<IDropdownProps> = ({ value, id, label, options, actionType }) => {
   const dispatch = useDispatch();
 
   const handleChange = (ev: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch({ type: actionType, payload: ev.currentTarget.value });
+    dispatch({ type: actionType, payload: ev.currentTarget.value, id: id });
   };
 
-  const options = optionsArr.map((option: string, idx: number) => (
-    <option key={idx}>{option}</option>
+  const optionsArr = Object.entries(options);
+
+  const optionList = optionsArr.map(([value, text], idx: number) => (
+    <option key={idx} value={value}>
+      {text}
+    </option>
   ));
 
   return (
     <label htmlFor={label}>
       {label}:
-      <select onChange={ev => handleChange(ev)} id={label}>
-        {options}
+      <select value={value} id={label} onChange={ev => handleChange(ev)}>
+        {optionList}
       </select>
     </label>
   );

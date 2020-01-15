@@ -38,10 +38,8 @@ import 'ace-builds/src-min-noconflict/theme-tomorrow_night';
 
 const Editor: React.FC = () => {
   const settings = useTypedSelector(state => state.settings.editorSettings);
-  const snippets = useTypedSelector(state => state.snippets);
 
   const {
-    currentSnippetId,
     theme,
     // autoSave,
     fontSize,
@@ -52,8 +50,8 @@ const Editor: React.FC = () => {
   } = settings;
 
   // TODO: obsluga undefind jezeli danego snippeta nie ma w kolekcji
-  const currentSnippetData = snippets.find(snippet => snippet.id === currentSnippetId)!;
-  console.log(currentSnippetData);
+  const currentSnippetData = useTypedSelector(state => state.settings.currentSnippet);
+  // console.log(currentSnippetData);
 
   const { title, language, value } = currentSnippetData;
 

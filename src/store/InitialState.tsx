@@ -2,6 +2,12 @@ import { ISnippetsState, ISettingsState } from '../types';
 
 export const initialSnippetsState: ISnippetsState = [
   {
+    title: 'Demo snippet',
+    language: 'javascript',
+    value: `console.log('Hello world!');`,
+    id: '000',
+  },
+  {
     title: 'log stuff into console',
     language: 'javascript',
     value: 'console.log("HELLO WORLD");',
@@ -25,13 +31,13 @@ export const initialSnippetsState: ISnippetsState = [
 
 export const initialSettingsState: ISettingsState = {
   currentSnippet: {
-    title: 'show a paragraph',
-    language: 'html',
-    value: "<p>what's up?</p>",
-    id: 'hihi999',
+    title: '',
+    language: '',
+    value: '',
+    id: '',
   },
   editorSettings: {
-    currentSnippetId: 'haha99',
+    currentSnippetId: '000',
     theme: 'monokai',
     fontSize: 18,
     tabSize: 2,
@@ -40,40 +46,5 @@ export const initialSettingsState: ISettingsState = {
     showGutter: true,
     highlightActiveLine: true,
     firstVisit: false,
-  },
-  dropdownOptions: {
-    languages: [
-      'C/C++',
-      'C#',
-      'CSS',
-      'Golang',
-      'Haskell',
-      'HTML',
-      'Java',
-      'JavaScript',
-      'JSON',
-      'JSX',
-      'Lua',
-      'PHP',
-      'Python',
-      'Ruby',
-      'Rust',
-      'Sass',
-      'SCSS',
-      'SQL',
-      'TypeScript',
-      'XML',
-    ],
-    themes: [
-      'Cobalt',
-      'Dracula',
-      'GitHub',
-      'Monokai',
-      'Solarized Dark',
-      'Solarized Light',
-      'Tomorrow Night',
-    ],
-    fontSizes: [14, 16, 18, 20, 22, 24],
-    tabSizes: [2, 4, 8],
   },
 };

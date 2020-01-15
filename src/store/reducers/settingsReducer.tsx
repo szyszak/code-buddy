@@ -1,6 +1,5 @@
 import produce from 'immer';
 import { initialSettingsState } from '../initialState';
-import { themes } from '../dictionaries';
 import { ISettingsState, ISettingsAction } from '../../types';
 
 const settingsReducer = (
@@ -11,11 +10,12 @@ const settingsReducer = (
     console.log(action);
     switch (action.type) {
       case 'settings/changeSnippet': {
+        draft.currentSnippet = action.payload;
         return;
       }
 
       case 'settings/changeTheme': {
-        draft.editorSettings.theme = themes[action.payload];
+        draft.editorSettings.theme = action.payload;
 
         return;
       }

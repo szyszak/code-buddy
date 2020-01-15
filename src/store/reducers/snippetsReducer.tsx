@@ -17,8 +17,10 @@ const snippetsReducer = (
         return;
       }
 
-      case 'snippets/update': {
-        // tutaj powinna odbywac sie zmiana jezyka
+      case 'snippets/changeLanguage': {
+        const snippetToChange = draft.find(snippet => snippet.id === action.id);
+        snippetToChange!.language = action.payload;
+
         return;
       }
     }

@@ -17,28 +17,22 @@ export interface IEditorSettings {
   firstVisit: boolean;
 }
 
-export interface IDropdownOptions {
-  languages: string[];
-  themes: string[];
-  fontSizes: number[];
-  tabSizes: number[];
-}
-
 export type ISnippetsState = ISnippet[];
 
 export type ISettingsState = {
   currentSnippet: ISnippet;
   editorSettings: IEditorSettings;
-  dropdownOptions: IDropdownOptions;
 }
 
 export type ISnippetsAction =
   | { type: 'snippets/add', payload: ISnippet }
   | { type: 'snippets/remove', payload: string }
-  | { type: 'snippets/update', payload: ISnippet }
+  | { type: 'snippets/changeLanguage', payload: string, id: string }
+  | { type: 'snippets/changeTitle', payload: string, id: string }
+  | { type: 'snippets/changeValue', payload: string, id: string }
 
 export type ISettingsAction =
-  | { type: 'settings/changeSnippet', payload: string }
+  | { type: 'settings/changeSnippet', payload: ISnippet }
   | { type: 'settings/changeTheme', payload: string }
   | { type: 'settings/changeFontSize', payload: number }
   | { type: 'settings/changeTabSize', payload: number }
