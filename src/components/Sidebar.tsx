@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 import useTypedSelector from '../hooks/useTypedSelector';
+import { useDispatch } from 'react-redux';
 import { languages, themes, fontSizes, tabSizes } from '../store/dictionaries';
 import Dropdown from './Dropdown';
 import Checkbox from './Checkbox';
 import styled from 'styled-components';
+import { IAction } from '../types';
 
 const Section = styled.section`
   display: flex;
@@ -11,8 +13,10 @@ const Section = styled.section`
 `;
 
 const Sidebar: React.FC = () => {
+  const dispatch: Dispatch<IAction> = useDispatch();
+
   const settings = useTypedSelector(state => state.settings);
-  // console.log(settings);
+
   const {
     theme,
     fontSize,
@@ -23,15 +27,26 @@ const Sidebar: React.FC = () => {
     highlightActiveLine,
   } = settings.editorSettings;
 
-  // const { languages, themes, fontSizes, tabSizes } = settings.dropdownOptions;
-
   const { language, id } = settings.currentSnippet;
 
   return (
     <Section>
       <button>ADD NEW blue</button>
-      <button>DELETE CURRENT red</button>
-      <button>SAVE green</button>
+
+      <button onClick={() => dispatch({ type: 'snippets/remove', payload: id })}>
+        DELETE CURRENT red
+      </button>
+      <button
+        onClick={() =>
+          // PROBABLY WON'T WORK
+          dispatch({ type: 'snippets/changeValue', payload: settings.currentSnippet.value, id: id })
+        }
+      >
+        SAVE green
+      </button>
+      <button style={{ padding: '16px' }} onClick={() => window.localStorage.clear()}>
+        CLEAR LOCAL STORAGE
+      </button>
       <Dropdown
         value={language}
         id={id}

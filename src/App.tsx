@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Dispatch } from 'react';
 import useTypedSelector from './hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import Sidebar from './components/Sidebar';
 import Editor from './components/Editor';
 import styled from 'styled-components';
+import { IAction } from './types';
 
 const Wrapper = styled.div`
   max-width: 1200px;
@@ -26,19 +27,24 @@ const App: React.FC = () => {
   const snippets = useTypedSelector(state => state.snippets);
   const settings = useTypedSelector(state => state.settings);
   console.log(snippets, settings);
-  const dispatch = useDispatch();
-  const isFirstVisit = settings.editorSettings.firstVisit;
+  const dispatch: Dispatch<IAction> = useDispatch();
+  const isFirstVisit = window.localStorage.getItem('state') === null;
   const currentSnippetId = settings.editorSettings.currentSnippetId;
 
   useEffect(() => {
     if (isFirstVisit) {
       console.log('FIRST VISIT');
+      const currentSnippet = snippets.find(snippet => snippet.id === 'demo');
+
+      dispatch({ type: 'settings/changeSnippet', payload: currentSnippet! });
+    } else if (snippets.length === 0) {
+      console.log('NO SNIPPETS FOUND');
+    } else {
+      console.log('ANOTHER VISIT');
+      const currentSnippet = snippets.find(snippet => snippet.id === currentSnippetId);
+
+      dispatch({ type: 'settings/changeSnippet', payload: currentSnippet! });
     }
-
-    console.log('ANOTHER VISIT');
-    const currentSnippet = snippets.find(snippet => snippet.id === currentSnippetId);
-
-    dispatch({ type: 'settings/changeSnippet', payload: currentSnippet });
   }, [dispatch, isFirstVisit, snippets, currentSnippetId]);
 
   return (

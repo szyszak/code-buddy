@@ -5,7 +5,7 @@ export const initialSnippetsState: ISnippetsState = [
     title: 'Demo snippet',
     language: 'javascript',
     value: `console.log('Hello world!');`,
-    id: '000',
+    id: 'demo',
   },
   {
     title: 'log stuff into console',
@@ -37,7 +37,7 @@ export const initialSettingsState: ISettingsState = {
     id: '',
   },
   editorSettings: {
-    currentSnippetId: '000',
+    currentSnippetId: 'demo',
     theme: 'monokai',
     fontSize: 18,
     tabSize: 2,
@@ -45,6 +45,5 @@ export const initialSettingsState: ISettingsState = {
     wrapLines: true,
     showGutter: true,
     highlightActiveLine: true,
-    firstVisit: false,
   },
 };

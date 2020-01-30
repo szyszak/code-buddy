@@ -14,12 +14,31 @@ const snippetsReducer = (
       }
 
       case 'snippets/remove': {
-        return;
+        return draft.filter(snippet => {
+          return snippet.id !== action.payload;
+        });
       }
 
       case 'snippets/changeLanguage': {
         const snippetToChange = draft.find(snippet => snippet.id === action.id);
+
         snippetToChange!.language = action.payload;
+
+        return;
+      }
+
+      case 'snippets/changeTitle': {
+        const snippetToChange = draft.find(snippet => snippet.id === action.id);
+
+        snippetToChange!.title = action.payload;
+
+        return;
+      }
+
+      case 'snippets/changeValue': {
+        const snippetToChange = draft.find(snippet => snippet.id === action.id);
+
+        snippetToChange!.value = action.payload;
 
         return;
       }

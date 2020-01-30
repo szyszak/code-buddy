@@ -11,6 +11,7 @@ const settingsReducer = (
     switch (action.type) {
       case 'settings/changeSnippet': {
         draft.currentSnippet = action.payload;
+
         return;
       }
 

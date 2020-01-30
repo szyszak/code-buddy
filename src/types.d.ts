@@ -1,3 +1,5 @@
+import rootReducer from './store/reducers/rootReducer'
+
 export interface ISnippet {
   title: string;
   language: string;
@@ -14,7 +16,6 @@ export interface IEditorSettings {
   wrapLines: boolean;
   showGutter: boolean;
   highlightActiveLine: boolean;
-  firstVisit: boolean;
 }
 
 export type ISnippetsState = ISnippet[];
@@ -40,9 +41,10 @@ export type ISettingsAction =
   | { type: 'settings/toggleWrapLines' }
   | { type: 'settings/toggleShowGutter' }
   | { type: 'settings/toggleHighlightActiveLine' }
-  | { type: 'settings/changeFirstVisit' }
 
 export type IAction = ISnippetsAction | ISettingsAction
+
+export type IRootState = ReturnType<typeof rootReducer>;
 
 export interface IDictionary {
   [key: string]: string;

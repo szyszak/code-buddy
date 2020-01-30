@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 import AceEditor from 'react-ace';
 import useTypedSelector from '../hooks/useTypedSelector';
+import { useDispatch } from 'react-redux';
+import { IAction } from '../types';
 import 'ace-builds/webpack-resolver';
 
 // ACE EDITOR EXTENSIONS?
@@ -37,11 +39,13 @@ import 'ace-builds/src-min-noconflict/theme-solarized_light';
 import 'ace-builds/src-min-noconflict/theme-tomorrow_night';
 
 const Editor: React.FC = () => {
+  const dispatch: Dispatch<IAction> = useDispatch();
+
   const settings = useTypedSelector(state => state.settings.editorSettings);
 
   const {
     theme,
-    // autoSave,
+    autoSave,
     fontSize,
     tabSize,
     wrapLines,
@@ -51,9 +55,15 @@ const Editor: React.FC = () => {
 
   // TODO: obsluga undefind jezeli danego snippeta nie ma w kolekcji
   const currentSnippetData = useTypedSelector(state => state.settings.currentSnippet);
-  // console.log(currentSnippetData);
 
-  const { title, language, value } = currentSnippetData;
+  const { title, language, value, id } = currentSnippetData;
+
+  // TODO: wydzielic handleValueChange jako importowalna akcje
+  const handleChange = (currentValue: string) => {
+    if (autoSave) {
+      dispatch({ type: 'snippets/changeValue', payload: currentValue, id: id });
+    }
+  };
 
   return (
     <section>
@@ -72,6 +82,7 @@ const Editor: React.FC = () => {
         wrapEnabled={wrapLines}
         editorProps={{ $blockScrolling: true }}
         // setOptions={{ useWorker: false }}
+        onChange={handleChange}
       />
     </section>
   );
