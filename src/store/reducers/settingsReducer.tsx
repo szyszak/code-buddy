@@ -7,10 +7,15 @@ const settingsReducer = (
   action: ISettingsAction,
 ): ISettingsState =>
   produce(state, draft => {
-    console.log(action);
     switch (action.type) {
       case 'settings/changeSnippet': {
         draft.currentSnippet = action.payload;
+
+        return;
+      }
+
+      case 'settings/changeCurrentSnippetId': {
+        draft.editorSettings.currentSnippetId = action.payload;
 
         return;
       }

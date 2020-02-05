@@ -1,6 +1,7 @@
 import React, { Dispatch } from 'react';
 import useTypedSelector from '../hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { languages, themes, fontSizes, tabSizes } from '../store/dictionaries';
 import Dropdown from './Dropdown';
 import Checkbox from './Checkbox';
@@ -15,7 +16,10 @@ const Section = styled.section`
 const Sidebar: React.FC = () => {
   const dispatch: Dispatch<IAction> = useDispatch();
 
+  const snippets = useTypedSelector(state => state.snippets);
   const settings = useTypedSelector(state => state.settings);
+
+  const history = useHistory();
 
   const {
     theme,
@@ -29,23 +33,23 @@ const Sidebar: React.FC = () => {
 
   const { language, id } = settings.currentSnippet;
 
+  const handleRemoveSnippet = (id: string) => {
+    history.push('/');
+    dispatch({ type: 'snippets/remove', payload: id });
+  };
+
   return (
     <Section>
       <button>ADD NEW blue</button>
 
-      <button onClick={() => dispatch({ type: 'snippets/remove', payload: id })}>
-        DELETE CURRENT red
-      </button>
+      <button onClick={() => handleRemoveSnippet(id)}>DELETE CURRENT red</button>
       <button
         onClick={() =>
-          // PROBABLY WON'T WORK
+          // payload musi zawierac obecny value edytora
           dispatch({ type: 'snippets/changeValue', payload: settings.currentSnippet.value, id: id })
         }
       >
         SAVE green
-      </button>
-      <button style={{ padding: '16px' }} onClick={() => window.localStorage.clear()}>
-        CLEAR LOCAL STORAGE
       </button>
       <Dropdown
         value={language}

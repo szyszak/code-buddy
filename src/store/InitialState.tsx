@@ -37,6 +37,7 @@ export const initialSettingsState: ISettingsState = {
     id: '',
   },
   editorSettings: {
+    // remove currentSnippetId?
     currentSnippetId: 'demo',
     theme: 'monokai',
     fontSize: 18,

@@ -53,12 +53,10 @@ const Editor: React.FC = () => {
     highlightActiveLine,
   } = settings;
 
-  // TODO: obsluga undefind jezeli danego snippeta nie ma w kolekcji
   const currentSnippetData = useTypedSelector(state => state.settings.currentSnippet);
 
   const { title, language, value, id } = currentSnippetData;
 
-  // TODO: wydzielic handleValueChange jako importowalna akcje
   const handleChange = (currentValue: string) => {
     if (autoSave) {
       dispatch({ type: 'snippets/changeValue', payload: currentValue, id: id });

@@ -7,7 +7,6 @@ const snippetsReducer = (
   action: ISnippetsAction,
 ): ISnippetsState =>
   produce(state, draft => {
-    console.log(action);
     switch (action.type) {
       case 'snippets/add': {
         return;
