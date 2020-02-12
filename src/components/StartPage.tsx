@@ -1,45 +1,47 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import Card from './Card';
+import AddSnippetModal from './AddSnippetModal';
 import styled from 'styled-components';
 import useTypedSelector from '../hooks/useTypedSelector';
-import { languages } from '../store/dictionaries';
 
 // STYLES
-const Main = styled.main`
+const Wrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
 `;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
+const Header = styled.h2`
+  margin: 20px;
+  text-align: center;
+  font-size: 26px;
 `;
-
-const Card = styled.div`
-  margin: 10px;
-  padding: 20px;
-  border: 1px #ffffff solid;
-  color: #ffffff;
-`;
-
-const Title = styled.h2``;
-
-const Language = styled.p``;
 
 // COMPONENT
 const StartPage: React.FC = () => {
   const snippets = useTypedSelector(state => state.snippets);
 
-  const links = snippets.map(snippet => (
-    <StyledLink to={`/${snippet.id}`} key={snippet.id}>
-      <Card>
-        <Title>title: {snippet.title}</Title>
-        <Language>language: {languages[snippet.language]}</Language>
-      </Card>
-    </StyledLink>
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const links = snippets.map(({ title, language, id }) => (
+    <Card title={title} language={language} id={id} key={id} />
   ));
 
-  return <Main>{links}</Main>;
+  return (
+    <main>
+      <button onClick={() => setIsModalOpen(true)}>ADD NEW SNIPPET</button>
+
+      {links.length > 0 ? (
+        <>
+          <Header>Avaliable snippets:</Header>
+          <Wrapper>{links}</Wrapper>
+        </>
+      ) : (
+        <Header>Snippet list is empty, add a new one!</Header>
+      )}
+      <AddSnippetModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+    </main>
+  );
 };
 
 export default StartPage;

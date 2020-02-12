@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import StartPage from './components/StartPage';
 import EditorPage from './components/EditorPage';
+import NotFoundPage from './components/NotFoundPage';
 import styled from 'styled-components';
 
 // STYLES
@@ -25,11 +26,14 @@ const App: React.FC = () => {
       </button>
       <Router>
         <Switch>
-          <Route path="/:id">
-            <EditorPage />
-          </Route>
-          <Route path="/">
+          <Route exact path="/">
             <StartPage />
+          </Route>
+          <Route exact path="/notfound">
+            <NotFoundPage />
+          </Route>
+          <Route exact path="/:id">
+            <EditorPage />
           </Route>
         </Switch>
       </Router>

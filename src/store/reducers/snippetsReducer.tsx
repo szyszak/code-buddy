@@ -9,13 +9,13 @@ const snippetsReducer = (
   produce(state, draft => {
     switch (action.type) {
       case 'snippets/add': {
+        draft.push(action.payload);
+
         return;
       }
 
       case 'snippets/remove': {
-        return draft.filter(snippet => {
-          return snippet.id !== action.payload;
-        });
+        return draft.filter(snippet => snippet.id !== action.payload);
       }
 
       case 'snippets/changeLanguage': {

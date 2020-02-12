@@ -58,6 +58,8 @@ const Editor: React.FC = () => {
   const { title, language, value, id } = currentSnippetData;
 
   const handleChange = (currentValue: string) => {
+    dispatch({ type: 'settings/updateCurrentSnippetValue', payload: currentValue });
+
     if (autoSave) {
       dispatch({ type: 'snippets/changeValue', payload: currentValue, id: id });
     }

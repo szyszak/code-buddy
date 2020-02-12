@@ -16,7 +16,6 @@ const Section = styled.section`
 const Sidebar: React.FC = () => {
   const dispatch: Dispatch<IAction> = useDispatch();
 
-  const snippets = useTypedSelector(state => state.snippets);
   const settings = useTypedSelector(state => state.settings);
 
   const history = useHistory();
@@ -40,17 +39,14 @@ const Sidebar: React.FC = () => {
 
   return (
     <Section>
-      <button>ADD NEW blue</button>
-
-      <button onClick={() => handleRemoveSnippet(id)}>DELETE CURRENT red</button>
       <button
         onClick={() =>
-          // payload musi zawierac obecny value edytora
           dispatch({ type: 'snippets/changeValue', payload: settings.currentSnippet.value, id: id })
         }
       >
         SAVE green
       </button>
+      <button onClick={() => handleRemoveSnippet(id)}>DELETE CURRENT red</button>
       <Dropdown
         value={language}
         id={id}

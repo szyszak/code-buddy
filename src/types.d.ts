@@ -34,6 +34,7 @@ export type ISnippetsAction =
 
 export type ISettingsAction =
   | { type: 'settings/changeSnippet', payload: ISnippet }
+  | { type: 'settings/updateCurrentSnippetValue', payload: string }
   | { type: 'settings/changeCurrentSnippetId', payload: string }
   | { type: 'settings/changeTheme', payload: string }
   | { type: 'settings/changeFontSize', payload: number }

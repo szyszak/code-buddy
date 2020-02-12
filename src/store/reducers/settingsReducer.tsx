@@ -14,6 +14,12 @@ const settingsReducer = (
         return;
       }
 
+      case 'settings/updateCurrentSnippetValue': {
+        draft.currentSnippet.value = action.payload;
+
+        return;
+      }
+
       case 'settings/changeCurrentSnippetId': {
         draft.editorSettings.currentSnippetId = action.payload;
 
