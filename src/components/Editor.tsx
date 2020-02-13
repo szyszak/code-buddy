@@ -5,8 +5,6 @@ import { useDispatch } from 'react-redux';
 import { IAction } from '../types';
 import 'ace-builds/webpack-resolver';
 
-// ACE EDITOR EXTENSIONS?
-
 // LANGUAGES
 import 'ace-builds/src-min-noconflict/mode-c_cpp';
 import 'ace-builds/src-min-noconflict/mode-csharp';
@@ -38,6 +36,7 @@ import 'ace-builds/src-min-noconflict/theme-solarized_dark';
 import 'ace-builds/src-min-noconflict/theme-solarized_light';
 import 'ace-builds/src-min-noconflict/theme-tomorrow_night';
 
+// COMPONENT
 const Editor: React.FC = () => {
   const dispatch: Dispatch<IAction> = useDispatch();
 
@@ -70,11 +69,11 @@ const Editor: React.FC = () => {
       <h2>snippet title: {title}</h2>
       <AceEditor
         width="100%"
-        focus={true}
+        // focus={true} // pokazuje klawiature na mobile, slaby UX
         mode={language}
         theme={theme}
         value={value}
-        name="code-editor" // musi byc unique?
+        name="code-editor"
         fontSize={fontSize}
         tabSize={tabSize}
         showGutter={showGutter}

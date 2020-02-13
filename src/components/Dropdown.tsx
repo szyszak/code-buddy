@@ -11,6 +11,7 @@ interface IDropdownProps {
   actionType: IAction['type'];
 }
 
+// COMPONENT
 const Dropdown: React.FC<IDropdownProps> = ({ value, id, label, options, actionType }) => {
   const dispatch = useDispatch();
 

@@ -8,11 +8,26 @@ import Checkbox from './Checkbox';
 import styled from 'styled-components';
 import { IAction } from '../types';
 
+interface IButtonProps {
+  background: string;
+}
+
+// STYLES
 const Section = styled.section`
   display: flex;
   flex-direction: column;
 `;
 
+const Button = styled.button<IButtonProps>`
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: ${props => props.background};
+  border: 1px solid #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+`;
+
+// COMPONENT
 const Sidebar: React.FC = () => {
   const dispatch: Dispatch<IAction> = useDispatch();
 
@@ -39,14 +54,21 @@ const Sidebar: React.FC = () => {
 
   return (
     <Section>
-      <button
+      <Button background="#0093e9" onClick={() => history.push('/')}>
+        go back
+      </Button>
+
+      <Button
+        background="#31c800"
         onClick={() =>
           dispatch({ type: 'snippets/changeValue', payload: settings.currentSnippet.value, id: id })
         }
       >
-        SAVE green
-      </button>
-      <button onClick={() => handleRemoveSnippet(id)}>DELETE CURRENT red</button>
+        save snippet
+      </Button>
+      <Button background="#f70000" onClick={() => handleRemoveSnippet(id)}>
+        delete snippet
+      </Button>
       <Dropdown
         value={language}
         id={id}

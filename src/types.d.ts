@@ -8,7 +8,6 @@ export interface ISnippet {
 }
 
 export interface IEditorSettings {
-  currentSnippetId: string;
   theme: string;
   fontSize: number;
   tabSize: number;

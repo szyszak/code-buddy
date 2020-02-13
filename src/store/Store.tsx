@@ -20,6 +20,7 @@ export const loadStateFromLocalStorage = () => {
 
     return JSON.parse(serializedState);
   } catch {
+    // use initialState if localStorage is unavailable
     return undefined;
   }
 };

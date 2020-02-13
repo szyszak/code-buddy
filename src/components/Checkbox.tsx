@@ -9,6 +9,7 @@ interface ICheckboxProps {
   actionType: IAction['type'];
 }
 
+// COMPONENT
 const Checkbox: React.FC<ICheckboxProps> = ({ label, isChecked, actionType }) => {
   const dispatch = useDispatch();
 

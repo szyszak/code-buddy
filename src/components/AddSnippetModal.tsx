@@ -3,13 +3,22 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Modal from 'react-modal';
 import nanoid from 'nanoid';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import { languages } from '../store/dictionaries';
 import { ISnippet, IAction } from '../types';
 
 interface IProps {
   isOpen: boolean;
   setIsOpen: Dispatch<boolean>;
+}
+
+interface IInputWrapperProps {
+  gridArea: string;
+}
+
+interface IButtonProps {
+  background: string;
+  gridArea: string;
 }
 
 // STYLES
@@ -30,6 +39,45 @@ const style: Modal.Styles = {
     borderRadius: '0px',
   },
 };
+
+const Form = styled.form`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  grid-template-areas:
+    'title-input language-input'
+    'add-button cancel-button';
+
+  @media (max-width: 360px) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'title-input'
+      'language-input'
+      'add-button'
+      'cancel-button';
+  }
+`;
+
+const InputWrapper = styled.div<IInputWrapperProps>`
+  grid-area: ${props => props.gridArea};
+`;
+
+const Input = styled.input`
+  width: 100%;
+`;
+
+const Select = styled.select`
+  width: 100%;
+`;
+
+const Button = styled.button<IButtonProps>`
+  grid-area: ${props => props.gridArea};
+  padding: 10px 24px;
+  background: ${props => props.background};
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-weight: bold;
+`;
 
 // COMPONENT
 Modal.setAppElement('#root');
@@ -74,35 +122,39 @@ const AddSnippetModal: React.FC<IProps> = ({ isOpen, setIsOpen }) => {
 
   return (
     <Modal isOpen={isOpen} onRequestClose={handleCloseModal} style={style}>
-      <form onSubmit={ev => handleAddSnippet(ev)}>
-        <label htmlFor="snippet-name">
-          Title:
-          <input
+      <Form onSubmit={ev => handleAddSnippet(ev)}>
+        <InputWrapper gridArea="title-input">
+          <label htmlFor="snippet-name">Title:</label>
+          <Input
             type="text"
             id="snippet-name"
             value={title}
             onChange={ev => setTitle(ev.currentTarget.value)}
             required
+            autoFocus
           />
-        </label>
+        </InputWrapper>
 
-        <label htmlFor="snippet-language">
-          Language:
-          <select
+        <InputWrapper gridArea="language-input">
+          <label htmlFor="snippet-language">Language:</label>
+          <Select
             id="snippet-language"
             value={language}
             onChange={ev => setLanguage(ev.currentTarget.value)}
+            required
           >
             {optionList}
-          </select>
-        </label>
+          </Select>
+        </InputWrapper>
 
-        <button type="submit">ADD</button>
+        <Button type="submit" background="green" gridArea="add-button">
+          ADD
+        </Button>
 
-        <button type="button" onClick={handleCloseModal}>
+        <Button type="button" background="red" gridArea="cancel-button" onClick={handleCloseModal}>
           CANCEL
-        </button>
-      </form>
+        </Button>
+      </Form>
     </Modal>
   );
 };

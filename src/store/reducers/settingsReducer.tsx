@@ -20,12 +20,6 @@ const settingsReducer = (
         return;
       }
 
-      case 'settings/changeCurrentSnippetId': {
-        draft.editorSettings.currentSnippetId = action.payload;
-
-        return;
-      }
-
       case 'settings/changeTheme': {
         draft.editorSettings.theme = action.payload;
 

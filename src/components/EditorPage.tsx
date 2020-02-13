@@ -11,7 +11,8 @@ import { IAction } from '../types';
 // STYLES
 const Main = styled.main`
   display: grid;
-  grid-auto-columns: 300px 1fr;
+  grid-auto-columns: 200px 1fr;
+  gap: 24px;
   grid-template-areas: 'sidebar editor';
 `;
 
@@ -24,11 +25,14 @@ const EditorPage: React.FC = () => {
 
   useEffect(() => {
     const currentSnippet = snippets.find(snippet => snippet.id === id);
+
     if (currentSnippet === undefined) {
       return history.push('/notfound');
     }
 
     dispatch({ type: 'settings/changeSnippet', payload: currentSnippet });
+
+    document.title = `Code Buddy - ${currentSnippet.title}`;
   }, [dispatch, history, id, snippets]);
 
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -21,11 +21,17 @@ const StyledLink = styled(Link)`
 `;
 
 // COMPONENT
-const NotFoundPage = () => (
-  <Main>
-    <Header>Error: Specified snippet not found.</Header>
-    <StyledLink to="/">Go back to home page.</StyledLink>
-  </Main>
-);
+const NotFoundPage = () => {
+  useEffect(() => {
+    document.title = 'Code Buddy - Not found';
+  });
+
+  return (
+    <Main>
+      <Header>Error: Specified snippet was not found.</Header>
+      <StyledLink to="/">Go back to home page.</StyledLink>
+    </Main>
+  );
+};
 
 export default NotFoundPage;

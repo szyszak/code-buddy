@@ -12,24 +12,22 @@ interface IProps {
 // STYLES
 const StyledLink = styled(Link)`
   text-decoration: none;
+  border: 1px #ffffff solid;
 `;
 
 const CardWrapper = styled.div`
-  width: 320px;
-  margin: 10px;
   padding: 20px;
   text-align: center;
-  border: 1px #ffffff solid;
   color: #ffffff;
 `;
 
 const Title = styled.h2`
-  font-size: 20px;
+  font-size: 18px;
 `;
 
 const Language = styled.p`
   margin-top: 8px;
-  font-size: 18px;
+  font-size: 16px;
 `;
 
 // COMPONENT

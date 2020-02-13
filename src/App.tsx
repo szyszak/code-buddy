@@ -9,10 +9,11 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   max-width: 1200px;
   margin: auto;
-  padding-top: 40px;
+  padding: 20px;
 `;
 
 const Header = styled.h1`
+  margin: 20px 0;
   text-align: center;
 `;
 
@@ -21,18 +22,18 @@ const App: React.FC = () => {
   return (
     <Wrapper>
       <Header>Code Buddy</Header>
-      <button style={{ padding: '16px' }} onClick={() => window.localStorage.clear()}>
-        CLEAR LOCAL STORAGE
-      </button>
+
       <Router>
         <Switch>
           <Route exact path="/">
             <StartPage />
           </Route>
+
           <Route exact path="/notfound">
             <NotFoundPage />
           </Route>
-          <Route exact path="/:id">
+
+          <Route path="/:id">
             <EditorPage />
           </Route>
         </Switch>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import AddSnippetModal from './AddSnippetModal';
 import styled from 'styled-components';
@@ -6,9 +6,10 @@ import useTypedSelector from '../hooks/useTypedSelector';
 
 // STYLES
 const Wrapper = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: 1fr;
 `;
 
 const Header = styled.h2`
@@ -22,6 +23,10 @@ const StartPage: React.FC = () => {
   const snippets = useTypedSelector(state => state.snippets);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    document.title = 'Code Buddy';
+  });
 
   const links = snippets.map(({ title, language, id }) => (
     <Card title={title} language={language} id={id} key={id} />
