@@ -17,7 +17,7 @@ interface IInputWrapperProps {
 }
 
 interface IButtonProps {
-  background: string;
+  backgroundColor: string;
   gridArea: string;
 }
 
@@ -73,9 +73,9 @@ const Select = styled.select`
 const Button = styled.button<IButtonProps>`
   grid-area: ${props => props.gridArea};
   padding: 10px 24px;
-  background: ${props => props.background};
-  border: 1px solid #ffffff;
-  color: #ffffff;
+  background-color: ${props => props.theme[props.backgroundColor]};
+  color: ${props => props.theme.fontColor};
+  border: solid 1px ${props => props.theme.fontColor};
   font-weight: bold;
 `;
 
@@ -147,11 +147,16 @@ const AddSnippetModal: React.FC<IProps> = ({ isOpen, setIsOpen }) => {
           </Select>
         </InputWrapper>
 
-        <Button type="submit" background="green" gridArea="add-button">
+        <Button type="submit" backgroundColor="green" gridArea="add-button">
           ADD
         </Button>
 
-        <Button type="button" background="red" gridArea="cancel-button" onClick={handleCloseModal}>
+        <Button
+          type="button"
+          backgroundColor="red"
+          gridArea="cancel-button"
+          onClick={handleCloseModal}
+        >
           CANCEL
         </Button>
       </Form>

@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import { IAction } from '../types';
 
 interface IButtonProps {
-  background: string;
+  backgroundColor: string;
 }
 
 // STYLES
@@ -21,7 +21,7 @@ const Section = styled.section`
 const Button = styled.button<IButtonProps>`
   margin-bottom: 10px;
   padding: 10px;
-  background-color: ${props => props.background};
+  background-color: ${props => props.theme[props.backgroundColor]};
   border: 1px solid #ffffff;
   font-weight: bold;
   text-transform: uppercase;
@@ -54,21 +54,23 @@ const Sidebar: React.FC = () => {
 
   return (
     <Section>
-      <Button background="#0093e9" onClick={() => history.push('/')}>
+      <Button backgroundColor="blue" onClick={() => history.push('/')}>
         go back
       </Button>
 
       <Button
-        background="#31c800"
+        backgroundColor="green"
         onClick={() =>
           dispatch({ type: 'snippets/changeValue', payload: settings.currentSnippet.value, id: id })
         }
       >
         save snippet
       </Button>
-      <Button background="#f70000" onClick={() => handleRemoveSnippet(id)}>
+
+      <Button backgroundColor="red" onClick={() => handleRemoveSnippet(id)}>
         delete snippet
       </Button>
+
       <Dropdown
         value={language}
         id={id}
@@ -76,19 +78,23 @@ const Sidebar: React.FC = () => {
         options={languages}
         actionType="snippets/changeLanguage"
       />
+
       <Dropdown value={theme} label="theme" options={themes} actionType="settings/changeTheme" />
+
       <Dropdown
         value={fontSize}
         label="font size"
         options={fontSizes}
         actionType="settings/changeFontSize"
       />
+
       <Dropdown
         value={tabSize}
         label="tab size"
         options={tabSizes}
         actionType="settings/changeTabSize"
       />
+
       <Checkbox label="autosave" isChecked={autoSave} actionType="settings/toggleAutosave" />
       <Checkbox label="wrap lines" isChecked={wrapLines} actionType="settings/toggleWrapLines" />
       <Checkbox label="show gutter" isChecked={showGutter} actionType="settings/toggleShowGutter" />

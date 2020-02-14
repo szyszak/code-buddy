@@ -18,6 +18,13 @@ const Header = styled.h2`
   font-size: 26px;
 `;
 
+const Button = styled.button`
+  padding: 10px 24px;
+  background-color: ${props => props.theme.green};
+  color: ${props => props.theme.fontColor};
+  border: solid 1px ${props => props.theme.fontColor};
+`;
+
 // COMPONENT
 const StartPage: React.FC = () => {
   const snippets = useTypedSelector(state => state.snippets);
@@ -34,7 +41,7 @@ const StartPage: React.FC = () => {
 
   return (
     <main>
-      <button onClick={() => setIsModalOpen(true)}>ADD NEW SNIPPET</button>
+      <Button onClick={() => setIsModalOpen(true)}>ADD NEW SNIPPET</Button>
 
       {links.length > 0 ? (
         <>

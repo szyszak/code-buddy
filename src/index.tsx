@@ -4,13 +4,16 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import GlobalStyles from './components/GlobalStyles';
+import Theme from './components/Theme';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <>
     <GlobalStyles />
     <Provider store={store}>
-      <App />
+      <Theme>
+        <App />
+      </Theme>
     </Provider>
   </>,
   document.getElementById('root'),
