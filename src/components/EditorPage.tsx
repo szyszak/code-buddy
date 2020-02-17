@@ -14,6 +14,13 @@ const Main = styled.main`
   grid-auto-columns: 200px 1fr;
   gap: 24px;
   grid-template-areas: 'sidebar editor';
+
+  @media (max-width: 768px) {
+    grid-template-areas:
+      'editor'
+      'sidebar';
+    grid-auto-columns: 1fr;
+  }
 `;
 
 // COMPONENT

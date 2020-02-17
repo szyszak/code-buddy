@@ -16,15 +16,22 @@ interface IButtonProps {
 const Section = styled.section`
   display: flex;
   flex-direction: column;
+  margin-top: 38px;
+  grid-area: sidebar;
+
+  @media (max-width: 768px) {
+    margin-top: 0;
+  }
 `;
 
 const Button = styled.button<IButtonProps>`
   margin-bottom: 10px;
   padding: 10px;
   background-color: ${props => props.theme[props.backgroundColor]};
-  border: 1px solid #ffffff;
-  font-weight: bold;
+  border: 1px solid ${props => props.theme.fontColor};
+  color: ${props => props.theme.fontColor};
   text-transform: uppercase;
+  cursor: pointer;
 `;
 
 // COMPONENT

@@ -5,6 +5,10 @@ import styled from 'styled-components';
 import useTypedSelector from '../hooks/useTypedSelector';
 
 // STYLES
+const Main = styled.main`
+  text-align: center;
+`;
+
 const Wrapper = styled.div`
   display: grid;
   gap: 24px;
@@ -23,6 +27,7 @@ const Button = styled.button`
   background-color: ${props => props.theme.green};
   color: ${props => props.theme.fontColor};
   border: solid 1px ${props => props.theme.fontColor};
+  cursor: pointer;
 `;
 
 // COMPONENT
@@ -40,7 +45,7 @@ const StartPage: React.FC = () => {
   ));
 
   return (
-    <main>
+    <Main>
       <Button onClick={() => setIsModalOpen(true)}>ADD NEW SNIPPET</Button>
 
       {links.length > 0 ? (
@@ -52,7 +57,7 @@ const StartPage: React.FC = () => {
         <Header>Snippet list is empty, add a new one!</Header>
       )}
       <AddSnippetModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-    </main>
+    </Main>
   );
 };
 

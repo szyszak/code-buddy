@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { IAction, IDictionary } from '../types';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 interface IDropdownProps {
   value: string | number;
@@ -10,6 +10,16 @@ interface IDropdownProps {
   options: IDictionary;
   actionType: IAction['type'];
 }
+
+// STYLES
+const Wrapper = styled.div`
+  margin: 2px 0;
+  color: ${props => props.theme.fontColor};
+`;
+
+const Label = styled.label`
+  margin-right: 6px;
+`;
 
 // COMPONENT
 const Dropdown: React.FC<IDropdownProps> = ({ value, id, label, options, actionType }) => {
@@ -28,12 +38,13 @@ const Dropdown: React.FC<IDropdownProps> = ({ value, id, label, options, actionT
   ));
 
   return (
-    <label htmlFor={label}>
-      {label}:
+    <Wrapper>
+      <Label htmlFor={label}>{label}:</Label>
+
       <select value={value} id={label} onChange={ev => handleChange(ev)}>
         {optionList}
       </select>
-    </label>
+    </Wrapper>
   );
 };
 

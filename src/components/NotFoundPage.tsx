@@ -16,7 +16,7 @@ const Header = styled.h2`
 
 const StyledLink = styled(Link)`
   margin-top: 30px;
-  color: #ffffff;
+  color: ${props => props.theme.fontColor};
   font-size: 26px;
 `;
 

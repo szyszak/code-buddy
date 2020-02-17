@@ -7,26 +7,6 @@ export const initialSnippetsState: ISnippetsState = [
     value: `console.log('Hello world!');`,
     id: 'demo',
   },
-  {
-    title: 'log stuff into console',
-    language: 'javascript',
-    value: 'console.log("HELLO WORLD");',
-    id: 'lol123',
-  },
-  {
-    title: 'make body color blue',
-    language: 'css',
-    value: `body {
-        background-color: blue;
-      }`,
-    id: 'haha99',
-  },
-  {
-    title: 'show a paragraph',
-    language: 'html',
-    value: "<p>what's up?</p>",
-    id: 'hihi999',
-  },
 ];
 
 export const initialSettingsState: ISettingsState = {

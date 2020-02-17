@@ -1,5 +1,6 @@
 import React, { Dispatch } from 'react';
 import AceEditor from 'react-ace';
+import styled from 'styled-components';
 import useTypedSelector from '../hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import { IAction } from '../types';
@@ -36,6 +37,16 @@ import 'ace-builds/src-min-noconflict/theme-solarized_dark';
 import 'ace-builds/src-min-noconflict/theme-solarized_light';
 import 'ace-builds/src-min-noconflict/theme-tomorrow_night';
 
+// STYLES
+const Section = styled.section`
+  grid-area: editor;
+`;
+
+const Header = styled.h2`
+  margin-bottom: 10px;
+  font-weight: normal;
+`;
+
 // COMPONENT
 const Editor: React.FC = () => {
   const dispatch: Dispatch<IAction> = useDispatch();
@@ -65,11 +76,11 @@ const Editor: React.FC = () => {
   };
 
   return (
-    <section>
-      <h2>snippet title: {title}</h2>
+    <Section>
+      <Header>snippet title: {title}</Header>
+
       <AceEditor
         width="100%"
-        // focus={true} // pokazuje klawiature na mobile, slaby UX
         mode={language}
         theme={theme}
         value={value}
@@ -83,7 +94,7 @@ const Editor: React.FC = () => {
         // setOptions={{ useWorker: false }}
         onChange={handleChange}
       />
-    </section>
+    </Section>
   );
 };
 

@@ -76,7 +76,7 @@ const Button = styled.button<IButtonProps>`
   background-color: ${props => props.theme[props.backgroundColor]};
   color: ${props => props.theme.fontColor};
   border: solid 1px ${props => props.theme.fontColor};
-  font-weight: bold;
+  cursor: pointer;
 `;
 
 // COMPONENT

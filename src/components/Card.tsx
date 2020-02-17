@@ -12,13 +12,13 @@ interface IProps {
 // STYLES
 const StyledLink = styled(Link)`
   text-decoration: none;
-  border: 1px #ffffff solid;
+  border: 1px solid ${props => props.theme.fontColor};
 `;
 
 const CardWrapper = styled.div`
   padding: 20px;
   text-align: center;
-  color: #ffffff;
+  color: ${props => props.theme.fontColor};
 `;
 
 const Title = styled.h2`
