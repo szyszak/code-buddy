@@ -1,16 +1,19 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
+import bg from '../assets/bg.png';
 
-// STYLES
+// THEME
 const theme = {
-  red: '#d50000',
-  green: '#009624',
-  blue: '#304ffe',
+  red: '#c00101',
+  green: '#006411',
+  blue: '#304fba',
   backgroundColor: '#171717',
+  backgroundImg: bg,
   fontColor: '#f5f5f5',
 };
 
+// GLOBAL STYLE
 const GlobalStyle = createGlobalStyle`
     * {
       margin: 0;
@@ -19,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
     }
   
     body {
-      background-color: ${theme.backgroundColor};
+      background-image: url(${theme.backgroundImg});
       color: ${theme.fontColor};
       font-family: 'Cairo', sans-serif;
     }

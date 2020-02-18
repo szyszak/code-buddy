@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // STYLES
 const Main = styled.main`
@@ -11,7 +11,12 @@ const Main = styled.main`
 `;
 
 const Header = styled.h2`
-  font-size: 30px;
+  text-align: center;
+  font-size: 26px;
+
+  @media (max-width: 600px) {
+    font-size: 22px;
+  }
 `;
 
 const StyledLink = styled(Link)`

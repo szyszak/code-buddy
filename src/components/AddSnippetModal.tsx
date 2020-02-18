@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { languages } from '../store/dictionaries';
 import { ISnippet, IAction } from '../types';
 
+// TYPES
 interface IProps {
   isOpen: boolean;
   setIsOpen: Dispatch<boolean>;
@@ -25,7 +26,7 @@ interface IButtonProps {
 const style: Modal.Styles = {
   overlay: {
     padding: '20px',
-    backgroundColor: 'rgba(23, 23, 23, 0.85)',
+    backgroundColor: 'rgba(23, 23, 23, 0.66)',
   },
   content: {
     maxWidth: '360px',
@@ -33,8 +34,8 @@ const style: Modal.Styles = {
     margin: 'auto',
     marginTop: '120px',
     position: 'static',
-    color: '#ffffff',
-    border: '1px solid #ffffff',
+    color: '#f5f5f5',
+    border: '1px solid #f5f5f5',
     background: '#171717',
     borderRadius: '0px',
   },
@@ -75,6 +76,7 @@ const Button = styled.button<IButtonProps>`
   padding: 10px 24px;
   background-color: ${props => props.theme[props.backgroundColor]};
   color: ${props => props.theme.fontColor};
+  text-transform: uppercase;
   border: solid 1px ${props => props.theme.fontColor};
   cursor: pointer;
 `;
@@ -148,7 +150,7 @@ const AddSnippetModal: React.FC<IProps> = ({ isOpen, setIsOpen }) => {
         </InputWrapper>
 
         <Button type="submit" backgroundColor="green" gridArea="add-button">
-          ADD
+          add
         </Button>
 
         <Button
@@ -157,7 +159,7 @@ const AddSnippetModal: React.FC<IProps> = ({ isOpen, setIsOpen }) => {
           gridArea="cancel-button"
           onClick={handleCloseModal}
         >
-          CANCEL
+          cancel
         </Button>
       </Form>
     </Modal>

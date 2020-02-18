@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { IAction } from '../types';
 
+// TYPES
 interface ICheckboxProps {
   label: string;
   isChecked: boolean;

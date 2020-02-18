@@ -2,7 +2,7 @@ import { ISnippetsState, ISettingsState } from '../types';
 
 export const initialSnippetsState: ISnippetsState = [
   {
-    title: 'Demo snippet',
+    title: 'demo snippet',
     language: 'javascript',
     value: `console.log('Hello world!');`,
     id: 'demo',

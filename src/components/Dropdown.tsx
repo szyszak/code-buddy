@@ -1,8 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { IAction, IDictionary } from '../types';
-import styled from 'styled-components';
 
+// TYPES
 interface IDropdownProps {
   value: string | number;
   id?: string;

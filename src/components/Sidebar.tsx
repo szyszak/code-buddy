@@ -8,6 +8,7 @@ import Checkbox from './Checkbox';
 import styled from 'styled-components';
 import { IAction } from '../types';
 
+// TYPES
 interface IButtonProps {
   backgroundColor: string;
 }
@@ -32,6 +33,10 @@ const Button = styled.button<IButtonProps>`
   color: ${props => props.theme.fontColor};
   text-transform: uppercase;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 240px;
+  }
 `;
 
 // COMPONENT

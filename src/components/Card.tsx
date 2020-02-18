@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { languages } from '../store/dictionaries';
 
+// TYPES
 interface IProps {
   title: string;
   language: string;
@@ -17,11 +18,12 @@ const StyledLink = styled(Link)`
 
 const CardWrapper = styled.div`
   padding: 20px;
+  background-color: ${props => props.theme.backgroundColor};
   text-align: center;
   color: ${props => props.theme.fontColor};
 `;
 
-const Title = styled.h2`
+const Title = styled.h3`
   font-size: 18px;
 `;
 

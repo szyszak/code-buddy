@@ -90,9 +90,8 @@ const Editor: React.FC = () => {
         showGutter={showGutter}
         highlightActiveLine={highlightActiveLine}
         wrapEnabled={wrapLines}
-        editorProps={{ $blockScrolling: true }}
-        // setOptions={{ useWorker: false }}
         onChange={handleChange}
+        debounceChangePeriod={500}
       />
     </Section>
   );
