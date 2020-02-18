@@ -1,3 +1,3 @@
 # Live version:
 
-[https://szyszak.github.io/code-buddy/](https://szyszak.github.io/code-buddy/)
+[https://codebuddy.krzysztofszyszko.pl//](https://codebuddy.krzysztofszyszko.pl/)
